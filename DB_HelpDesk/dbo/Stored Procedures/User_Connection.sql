@@ -1,6 +1,14 @@
 ﻿CREATE PROCEDURE [dbo].[User_Connection]
-	@param1 int = 0,
-	@param2 int
+	@Email NVARCHAR(30),
+	@Passwd NVARCHAR(50)
 AS
-	SELECT @param1, @param2
-RETURN 0
+
+BEGIN
+
+DECLARE @Peper NVARCHAR(128) = '%1PepperBoy0%'
+
+SELECT Id_User, Firstname, Lastname, Email 
+FROM Users
+Where Email = @Email AND HashPsw = HASHBYTES('SHA2_512', Salt + @Passwd + @Peper)
+
+END

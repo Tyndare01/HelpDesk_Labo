@@ -61,7 +61,7 @@
     <Folder Include="dbo\Tables" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\User.sql" />
+    <Build Include="dbo\Tables\Users.sql" />
     <Build Include="dbo\Tables\Ticket_Details.sql" />
     <Build Include="dbo\Tables\TIcket_Priorities.sql" />
     <Build Include="dbo\Tables\Ticket_Statuses.sql" />
@@ -69,5 +69,6 @@
     <Build Include="dbo\Tables\Ticket_Settings.sql" />
     <Build Include="dbo\Tables\Tickets.sql" />
     <Build Include="dbo\Stored Procedures\User_Connection.sql" />
+    <Build Include="dbo\Stored Procedures\User_Register.sql" />
   </ItemGroup>
 </Project>

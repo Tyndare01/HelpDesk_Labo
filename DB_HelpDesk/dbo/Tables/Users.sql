@@ -1,9 +1,10 @@
-﻿CREATE TABLE [dbo].[User]
+﻿CREATE TABLE [dbo].[Users]
 (
 	[Id_User] INT NOT NULL PRIMARY KEY,
 	[Firstname] VARCHAR(50) NOT NULL,
 	[Lastname] VARCHAR(50) NOT NULL,
 	[Email] VARCHAR(50) NOT NULL,
+	[Role] BIT NOT NULL,
 	[SALT] VARCHAR NOT NULL,
 	[HashPsw] VARBINARY NOT NULL
 )
