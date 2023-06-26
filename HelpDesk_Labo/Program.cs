@@ -1,3 +1,5 @@
+using DAL.Interfaces;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System.Data;
 
@@ -11,7 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IDbConnection>(sp => new SqlConnection(configuration.GetConnectionString("default")));
-builder.Services.AddScoped<IAuthRepository, AuthService>();
+builder.Services.AddScoped<ITicketRepository, TicketService>();
 
 var app = builder.Build();
 

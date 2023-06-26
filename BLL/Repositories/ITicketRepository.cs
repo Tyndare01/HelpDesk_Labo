@@ -5,13 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Interfaces
+namespace BLL.Repositories
 {
     public interface ITicketRepository
     {
-        public void AddTicket (Ticket ticket);
-        Task <Ticket> GetById (int Id);
-        Task <IEnumerable<Ticket>> GetAll();
-
+        public void AddTicket(Ticket ticket);
+        Task<Ticket> GetById(int Id);
+        Task<IEnumerable<Ticket>> GetAll();
     }
 }
