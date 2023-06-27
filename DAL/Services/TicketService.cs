@@ -1,4 +1,4 @@
-﻿using DAL.Interfaces;
+﻿using DAL.Repositories;
 using Dapper;
 using Domain.Entities;
 using System;
@@ -31,7 +31,7 @@ namespace DAL.Services
 
         public async Task<IEnumerable<Ticket>> GetAll()
         {
-            string sql = "SELECT * FROM Ticket";
+            string sql = "SELECT * FROM Tickets";
 
             return await connection.QueryAsync<Ticket>(sql);
         }

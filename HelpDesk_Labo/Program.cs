@@ -1,8 +1,7 @@
-using DAL.Interfaces;
+using API_HelpDesk_Labo.Hubs;
+using DAL.Repositories;
 using DAL.Services;
-using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
-using System.Data;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +12,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IDbConnection>(sp => new SqlConnection(configuration.GetConnectionString("default")));
-builder.Services.AddScoped<ITicketRepository, TicketService>();
+builder.Services.AddSignalR();
+builder.Services.AddSingleton<TicketHub>();
+builder.Services.AddScoped<BLL.Repositories.ITicketRepository, BLL.Services.TicketService>();
+builder.Services.AddScoped<ITicketRepository, TicketService>(sp =>
+new TicketService(
+    new System.Data.SqlClient.SqlConnection(
+        builder.Configuration.GetConnectionString("default"))));
 
 var app = builder.Build();
 
