@@ -11,7 +11,7 @@ namespace DAL.Repositories
     {
         public void AddTicket (Ticket ticket);
         Task <Ticket> GetById (int Id);
-        Task <IEnumerable<Ticket>> GetAll();
+        Task <IEnumerable<TicketView>> GetAll();
 
     }
 }

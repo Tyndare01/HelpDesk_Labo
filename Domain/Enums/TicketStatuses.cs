@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Domain.Enums
 {
-    public enum Priorities
+    public enum TicketStatuses
     {
-        Low,
-        Medium, 
-        High,
-        Undefened
+        OpenTicket,
+        AssignedTicket,
+        PendingTicket,
+        CloseTicket
     }
 }

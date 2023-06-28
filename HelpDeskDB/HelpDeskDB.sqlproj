@@ -3,16 +3,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>DBHelpDesk</Name>
+    <Name>HelpDeskDB</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{cfcd0473-2e96-4374-9ee4-70097194aa87}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
+    <ProjectGuid>{028e1949-cf86-4f62-997e-d9f0aa7897ff}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>DBHelpDesk</RootNamespace>
-    <AssemblyName>DBHelpDesk</AssemblyName>
+    <RootNamespace>HelpDeskDB</RootNamespace>
+    <AssemblyName>HelpDeskDB</AssemblyName>
     <ModelCollation>1033,CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
@@ -61,7 +61,7 @@
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
     <Folder Include="dbo\Stored Procedures\" />
-    <Folder Include="dbo\Views" />
+    <Folder Include="Views" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Ticket_Details.sql" />
@@ -73,6 +73,10 @@
     <Build Include="dbo\Tables\Users.sql" />
     <Build Include="dbo\Stored Procedures\User_Connection.sql" />
     <Build Include="dbo\Stored Procedures\User_Register.sql" />
-    <Build Include="dbo\Views\TicketsView.sql" />
+    <Build Include="Views\TicketView.sql" />
+    <Build Include="dbo\Stored Procedures\Ticket_Create.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HelpDeskDB.publish.xml" />
   </ItemGroup>
 </Project>

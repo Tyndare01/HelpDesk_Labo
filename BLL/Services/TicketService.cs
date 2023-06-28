@@ -10,14 +10,21 @@ namespace BLL.Services
 {
     public class TicketService : ITicketRepository
     {
-        private readonly ITicketRepository _TicketService;
+       
+        private readonly DAL.Repositories.ITicketRepository _TicketService;
+
+
+        public TicketService(DAL.Repositories.ITicketRepository ticketService)
+        {
+            _TicketService = ticketService;
+        }
 
         public void AddTicket(Ticket ticket)
         {
             _TicketService.AddTicket(ticket);
         }
 
-        public async Task<IEnumerable<Ticket>> GetAll()
+        public async Task<IEnumerable<TicketView>> GetAll()
         {
            return await _TicketService.GetAll();
 

@@ -29,11 +29,11 @@ namespace DAL.Services
                 
         }
 
-        public async Task<IEnumerable<Ticket>> GetAll()
+        public async Task<IEnumerable<TicketView>> GetAll()
         {
-            string sql = "SELECT * FROM Tickets";
+            string sql = "SELECT * FROM TicketView";
 
-            return await connection.QueryAsync<Ticket>(sql);
+            return await connection.QueryAsync<TicketView>(sql);
         }
 
         public async Task<Ticket> GetById(int Id)
