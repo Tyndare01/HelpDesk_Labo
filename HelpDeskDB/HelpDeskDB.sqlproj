@@ -3,17 +3,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>DBHelpDesk</Name>
+    <Name>HelpDeskDB</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{cfcd0473-2e96-4374-9ee4-70097194aa87}</ProjectGuid>
+    <ProjectGuid>{028e1949-cf86-4f62-997e-d9f0aa7897ff}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>DBHelpDesk</RootNamespace>
-    <AssemblyName>DBHelpDesk</AssemblyName>
-    <ModelCollation>1033,CI</ModelCollation>
+    <RootNamespace>HelpDeskDB</RootNamespace>
+    <AssemblyName>HelpDeskDB</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -22,8 +22,6 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
-    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
-    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -58,21 +56,5 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="dbo\" />
-    <Folder Include="dbo\Tables\" />
-    <Folder Include="dbo\Stored Procedures\" />
-    <Folder Include="dbo\Views" />
-  </ItemGroup>
-  <ItemGroup>
-    <Build Include="dbo\Tables\Ticket_Details.sql" />
-    <Build Include="dbo\Tables\Ticket_Priorities.sql" />
-    <Build Include="dbo\Tables\Ticket_Settings.sql" />
-    <Build Include="dbo\Tables\Ticket_Statuses.sql" />
-    <Build Include="dbo\Tables\Ticket_Types.sql" />
-    <Build Include="dbo\Tables\Tickets.sql" />
-    <Build Include="dbo\Tables\Users.sql" />
-    <Build Include="dbo\Stored Procedures\User_Connection.sql" />
-    <Build Include="dbo\Stored Procedures\User_Register.sql" />
-    <Build Include="dbo\Views\TicketsView.sql" />
   </ItemGroup>
 </Project>
