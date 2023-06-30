@@ -79,4 +79,7 @@
   <ItemGroup>
     <None Include="HelpDeskDB.publish.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Script.PostDeployment1.sql" />
+  </ItemGroup>
 </Project>

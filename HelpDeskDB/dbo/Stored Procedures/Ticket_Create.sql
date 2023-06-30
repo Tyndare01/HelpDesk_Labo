@@ -14,7 +14,6 @@ BEGIN
 DECLARE @Id_Ticket_Details INT
 DECLARE @Id_Ticket_Type INT 
 DECLARE @Id_Priorities INT = 4
-DECLARE @Id_Settings INT = 1
 DECLARE @Id_Status INT = 1
 
 DECLARE @ID_Ticket INT 
@@ -45,8 +44,7 @@ SET @Id_Ticket_Details = SCOPE_IDENTITY()
 
  Insert INTO [dbo].[Tickets]
  (Id_Details, 
- Id_Priorities, 
- Id_Settings, 
+ Id_Priorities,  
  Id_Status, 
  Id_Type, 
  Id_User)
@@ -55,7 +53,6 @@ SET @Id_Ticket_Details = SCOPE_IDENTITY()
  VALUES (
  @Id_Ticket_Details, 
  @Id_Priorities,
- @Id_Settings,
  @Id_Status,
  @Id_Ticket_Type,
  @Id_User
@@ -63,6 +60,12 @@ SET @Id_Ticket_Details = SCOPE_IDENTITY()
  
  SET @ID_Ticket = SCOPE_IDENTITY()
 
+ INSERT INTO Ticket_Settings(Id, Settings_Name, Settings_Date)
+ 
+ VALUES (@ID_Ticket, 'Created', GETDATE())
+
+
  SELECT Id, Title, [Description], StartDate FROM TicketView WHERE Id = @ID_Ticket
+
 
 END 

@@ -11,6 +11,6 @@ namespace Domain.Enums
     {
         Created,
         updated,
-        deleted
+        closed
     }
 }

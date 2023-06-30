@@ -2,7 +2,8 @@
 	@Email NVARCHAR(50),
 	@Firstname NVARCHAR(50),
 	@Lastname NVARCHAR (50),
-	@Passwd NVARCHAR(50)
+	@Passwd NVARCHAR(50),
+	@Role VARCHAR(15)
 AS
 	
 BEGIN
@@ -15,6 +16,6 @@ SET @passwordHash = HASHBYTES('SHA2_512', @salt + @Passwd + @Pepper)
 
 Insert INTO Users(Email, Firstname, Lastname, Role, SALT, HashPsw)
 
-VALUES (@Email, @Firstname, @Lastname, 0, @salt, @passwordHash)
+VALUES (@Email, @Firstname, @Lastname, @Role, @salt, @passwordHash)
 
 END
