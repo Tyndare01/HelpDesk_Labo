@@ -35,14 +35,14 @@ namespace API_HelpDesk_Labo.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateTicketDTO ticketDTO)
+        public async Task<IActionResult> Create([FromBody] CreateTicketDTO ticketDTO, int Id_User)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
 
-            ticketService.AddTicket(ticketDTO.ToTicket());
+            ticketService.AddTicket(ticketDTO.ToTicket(), Id_User);
             await _ticketHub.NotifyNewTicket();
             return Ok();
         }

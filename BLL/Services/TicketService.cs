@@ -19,9 +19,9 @@ namespace BLL.Services
             _TicketService = ticketService;
         }
 
-        public void AddTicket(Ticket ticket)
+        public void AddTicket(Ticket ticket, int Id_User)
         {
-            _TicketService.AddTicket(ticket);
+            _TicketService.AddTicket(ticket, Id_User);
         }
 
         public async Task<IEnumerable<TicketView>> GetAll()
@@ -30,7 +30,7 @@ namespace BLL.Services
 
         }
 
-        public async Task<Ticket> GetById(int Id)
+        public async Task<TicketView> GetById(int Id)
         {
             return await _TicketService.GetById(Id);
 

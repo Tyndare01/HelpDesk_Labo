@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Mail;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,12 +21,23 @@ namespace DAL.Services
             this.connection = connection;
         }
 
-        public void AddTicket(Ticket ticket)
+        public void AddTicket(Ticket ticket, int Id_User)
         {
-            string sql = "Insert INTO Ticket (Title, Description, Attachment, TicketType)"  +
-                " VALUES (@Title, @Description,@Attachment, @TicketType)"; 
+            string procedure = "Ticket_Create";
+            var parameter = new
+            {
+                Title = ticket.Title,
+                Description = ticket.Title,
+                Attachment = ticket.Attachment,
+                TypeName = ticket.TicketType,
+                StartDate = ticket.StartDate,
+                Id_User = Id_User
+            };
 
-            connection.Execute(sql, ticket);
+
+
+
+           connection.ExecuteScalar(procedure, parameter, commandType:CommandType.StoredProcedure);
                 
         }
 
@@ -36,12 +48,12 @@ namespace DAL.Services
             return await connection.QueryAsync<TicketView>(sql);
         }
 
-        public async Task<Ticket> GetById(int Id)
+        public async Task<TicketView> GetById(int Id)
         {
-            string sql = "Select * FROM Ticket WHERE Id = @Id";
+            string sql = "Select * FROM TicketView WHERE Id = @Id";
 
             var param = new { Id = Id }; 
-            return await connection.QueryFirstAsync<Ticket>(sql, param);
+            return await connection.QueryFirstAsync<TicketView>(sql, param);
         }
 
  

@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[User_Register]
-	@Email NVARCHAR(50),
+	@Email NVARCHAR(100),
 	@Firstname NVARCHAR(50),
 	@Lastname NVARCHAR (50),
 	@Passwd NVARCHAR(50),
@@ -8,7 +8,7 @@ AS
 	
 BEGIN
 
-DECLARE @salt VARCHAR, @passwordHash VARBINARY(64), @Pepper NVARCHAR(128) = '%1PepperBoy0%'
+DECLARE @salt VARCHAR(100), @passwordHash VARBINARY(64), @Pepper NVARCHAR(128) = '%1PepperBoy0%'
 
 SET @salt = NEWID();
 

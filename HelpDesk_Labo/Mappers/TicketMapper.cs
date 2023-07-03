@@ -13,7 +13,8 @@ namespace API_HelpDesk_Labo.Mappers
                 Title = ticketDTO.Title,
                 Description = ticketDTO.Description,
                 Attachment = ticketDTO.Attachment,
-                StartDate = ticketDTO.StartDate,
+                TicketType = ticketDTO.TicketType,
+                StartDate = ticketDTO.StartDate
             };
         }
     }

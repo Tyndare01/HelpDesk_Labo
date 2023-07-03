@@ -9,8 +9,8 @@ namespace BLL.Repositories
 {
     public interface ITicketRepository
     {
-        public void AddTicket(Ticket ticket);
-        Task<Ticket> GetById(int Id);
+        public void AddTicket(Ticket ticket, int Id_User);
+        Task<TicketView> GetById(int Id);
         Task<IEnumerable<TicketView>> GetAll();
     }
 }
