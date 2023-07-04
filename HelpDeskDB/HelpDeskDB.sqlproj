@@ -75,6 +75,7 @@
     <Build Include="dbo\Stored Procedures\User_Register.sql" />
     <Build Include="Views\TicketView.sql" />
     <Build Include="dbo\Stored Procedures\Ticket_Create.sql" />
+    <Build Include="dbo\Stored Procedures\User_Update.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HelpDeskDB.publish.xml" />

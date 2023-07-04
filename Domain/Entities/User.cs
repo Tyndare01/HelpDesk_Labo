@@ -11,6 +11,18 @@ namespace Domain.Entities
 {
     public class User
     {
+        public User() 
+        {
+            
+        }
+
+        public User(string email, string password)
+        {
+            Email = email;
+            Password = password;
+            Role = Roles.Employee;
+
+        }
 
         public int Id { get; set; }
 
@@ -21,6 +33,8 @@ namespace Domain.Entities
         public string Email { get; set; }
 
         public Roles Role { get; set; }
+
+        public string? Password { get; set; }
 
 
     }

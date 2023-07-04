@@ -42,6 +42,8 @@ VALUES (
 
 SET @Id_Ticket_Details = SCOPE_IDENTITY()
 
+ 
+
  Insert INTO [dbo].[Tickets]
  (Id_Details, 
  Id_Priorities,  

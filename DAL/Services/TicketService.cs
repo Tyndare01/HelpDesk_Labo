@@ -23,21 +23,28 @@ namespace DAL.Services
 
         public void AddTicket(Ticket ticket, int Id_User)
         {
-            string procedure = "Ticket_Create";
-            var parameter = new
+            try
             {
-                Title = ticket.Title,
-                Description = ticket.Title,
-                Attachment = ticket.Attachment,
-                TypeName = ticket.TicketType,
-                StartDate = ticket.StartDate,
-                Id_User = Id_User
-            };
+                string procedure = "Ticket_Create";
+                var parameter = new
+                {
+                    Title = ticket.Title,
+                    Description = ticket.Title,
+                    Attachment = ticket.Attachment,
+                    TypeName = ticket.TicketType,
+                    StartDate = ticket.StartDate,
+                    Id_User = Id_User
+                };
 
+                connection.ExecuteScalar(procedure, parameter, commandType: CommandType.StoredProcedure);
+            }
+             catch(Exception e) 
+            
+            {
+                throw new Exception(e.Message);
+            }
+           
 
-
-
-           connection.ExecuteScalar(procedure, parameter, commandType:CommandType.StoredProcedure);
                 
         }
 

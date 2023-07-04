@@ -14,6 +14,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSignalR();
 builder.Services.AddSingleton<TicketHub>();
+builder.Services.AddScoped<BLL.Repositories.IUserRepositoryBLL, BLL.Services.UserServiceBLL>();
+builder.Services.AddScoped<IUserRepository, UserService>();
 builder.Services.AddScoped<BLL.Repositories.ITicketRepository, BLL.Services.TicketService>();
 builder.Services.AddScoped<ITicketRepository, TicketService>(sp =>
 new TicketService(
