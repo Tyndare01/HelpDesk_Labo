@@ -1,15 +1,19 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BLL.Repositories.DTOs.User
+namespace BLL.Entities.DTOs.User
 {
     public class CreateUserDTO
     {
-     
-
         [Required]
         [MaxLength(50)]
         [EmailAddress]
-        public string Email { get; set; }
+        public string? Email { get; set; }
+
+        [Required]
+        public string Firstname { get; set; }
+
+        [Required] 
+        public string Lastname { get;set; }
 
 
         [Required]

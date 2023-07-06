@@ -1,6 +1,7 @@
-﻿using BLL.Entities.Mappers;
+﻿using BLL.Entities.DTOs.User;
+using BLL.Entities.Mappers;
+using BLL.Entities.ViewModel;
 using BLL.Repositories;
-using BLL.Repositories.DTOs.User;
 using Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -20,37 +21,33 @@ namespace BLL.Services
             _UserRepository = userServiceBLL;
         }
 
-        public User? Create(CreateUserDTO createUserDTO)
+        public UserViewModel? Create(CreateUserDTO createUserDTO)
         {
-            return _UserRepository.Create(createUserDTO.ToUser());
+            return _UserRepository.Create(createUserDTO.ToUser())?.ToUserViewModel();
         }
 
         public bool Delete(int Id)
         {
-            
+            return false;
         }
 
-        public bool EmailAlreadyUsed(string email)
+
+        public async Task<IEnumerable<UserViewModel>> GetAll()
         {
-            throw new NotImplementedException();
+            return (await _UserRepository.GetAll()).ToUserViewModelsList(); 
         }
 
-        public Task<IEnumerable<User>> GetAll()
+        public async Task<UserViewModel?> GetByEmail(string email)
         {
-            throw new NotImplementedException();
+            return (await _UserRepository.GetByEmail(email))?.ToUserViewModel();
         }
 
-        public Task<User?> GetByEmail(string email)
+        public async Task<UserViewModel?> GetById(int Id)
         {
-            throw new NotImplementedException();
+            return (await _UserRepository.GetById(Id))?.ToUserViewModel();
         }
 
-        public Task<User?> GetById(int Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public User? Update(User user)
+        public UserViewModel? UpdateDatas(int id, ChangeDataDTO changeDataDTO)
         {
             throw new NotImplementedException();
         }

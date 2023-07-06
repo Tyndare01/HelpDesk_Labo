@@ -1,6 +1,6 @@
-﻿using API_HelpDesk_Labo.DTOs.Ticket;
+﻿using API_HelpDesk_Labo.DTOs;
 using API_HelpDesk_Labo.Hubs;
-using API_HelpDesk_Labo.Mappers;
+using BLL.Entities.Mappers;
 using BLL.Repositories;
 using Microsoft.AspNetCore.Mvc;
 

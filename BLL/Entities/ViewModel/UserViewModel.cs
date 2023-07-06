@@ -1,6 +1,6 @@
 ﻿using Domain.Enums;
 
-namespace API_HelpDesk_Labo.ViewModel
+namespace BLL.Entities.ViewModel
 {
     public class UserViewModel
     {

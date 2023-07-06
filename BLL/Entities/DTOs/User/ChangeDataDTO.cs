@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace API_HelpDesk_Labo.DTOs.User
+namespace BLL.Entities.DTOs.User
 {
     public class ChangeDataDTO
     {

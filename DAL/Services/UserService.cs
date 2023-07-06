@@ -32,7 +32,7 @@ namespace DAL.Services
                     Firstname = user.FirstName,
                     Lastname = user.LastName,
                     Role = user.Role,
-                    Password = user.Password
+                    Passwd = user.Password
 
                 };
 
@@ -86,7 +86,7 @@ namespace DAL.Services
 
         public async Task<IEnumerable<User>> GetAll()
         {
-            string sql = "SELECT * FROM Users";
+            string sql = "SELECT * FROM Users"; 
             return await connection.QueryAsync<User>(sql);
 
         }
@@ -101,10 +101,11 @@ namespace DAL.Services
 
         public async Task<User?> GetById(int Id)
         {
-            string sql = "SELECT * FROM Users WHERE Id = @Id";
+            string sql = "SELECT * FROM Users WHERE Id_User = @Id";
 
             var param = new { Id = Id };
             return await connection.QueryFirstAsync<User>(sql, param);
+            
         }
 
         public User? Update(User user)

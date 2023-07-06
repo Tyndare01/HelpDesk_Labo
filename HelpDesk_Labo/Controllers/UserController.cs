@@ -1,10 +1,12 @@
 ﻿
-using API_HelpDesk_Labo.ViewModel;
 using BLL.Repositories;
-using BLL.Repositories.DTOs.User;
 using DAL.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using BLL.Entities.DTOs.User;
+using BLL.Entities.Mappers;
+using BLL.Entities.ViewModel;
+using Domain.Entities;
 
 namespace API_HelpDesk_Labo.Controllers
 {
@@ -24,17 +26,33 @@ namespace API_HelpDesk_Labo.Controllers
         {
             if(ModelState.IsValid) 
             {
-                _userService.Create(createUserDto);
+               _userService.Create(createUserDto);
                 return Ok();
             }
             return BadRequest();
         }
-
-        public ActionResult<IEnumerable<UserViewModel>> GetAll() 
+        
+        [HttpGet]
+        public async Task<IActionResult> GetAll() 
         {
-            return Ok(_userService.GetAll());
+            return Ok(await _userService.GetAll());
         }
+
+        [HttpGet("{Id}")]
+        public async Task<IActionResult> GetById(int Id)
+        {
+            return Ok(await _userService.GetById(Id));
+        }
+
+        [HttpGet("{Email}")]
+        public async Task<IActionResult> GetByEmail(string email)
+        {
+            return Ok(await _userService.GetByEmail(email));
+        }
+
     }
+
+
 
     
 }

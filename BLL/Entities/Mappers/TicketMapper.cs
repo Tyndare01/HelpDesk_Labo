@@ -2,7 +2,7 @@
 using Domain.Entities;
 using System.Runtime.InteropServices;
 
-namespace API_HelpDesk_Labo.Mappers
+namespace BLL.Entities.Mappers
 {
     public static class TicketMapper
     {

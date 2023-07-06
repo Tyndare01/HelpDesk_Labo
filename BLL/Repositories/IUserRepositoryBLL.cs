@@ -1,4 +1,6 @@
-﻿using BLL.Repositories.DTOs.User;
+﻿
+using BLL.Entities.ViewModel;
+using BLL.Entities.DTOs.User;
 using Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,19 +12,21 @@ namespace BLL.Repositories
 {
     public interface IUserRepositoryBLL
     {
-        public User? Create(CreateUserDTO user);
+        public UserViewModel? Create(CreateUserDTO user);
 
-        public bool EmailAlreadyUsed(string email);
+        //public bool EmailAlreadyUsed(string email);
 
-        Task<User?> GetByEmail(string email);
-
-
-        Task<User?> GetById(int Id);
+        Task<UserViewModel?> GetByEmail(string email);
 
 
-        Task<IEnumerable<User>> GetAll(); // On peut pas avoir un tableau avec des users null
+        Task<UserViewModel?> GetById(int Id);
 
-        public User? Update(User user);
+
+        Task<IEnumerable<UserViewModel>> GetAll(); // On peut pas avoir un tableau avec des users null
+
+        UserViewModel? UpdateDatas(int id, ChangeDataDTO changeDataDTO);
+
+
 
         public bool Delete(int Id);
     }

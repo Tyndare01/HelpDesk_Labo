@@ -16,9 +16,11 @@ namespace Domain.Entities
             
         }
 
-        public User(string email, string password)
+        public User(string email, string firstname, string lastname, string password)
         {
             Email = email;
+            FirstName = firstname;
+            LastName = lastname;
             Password = password;
             Role = Roles.Employee;
 

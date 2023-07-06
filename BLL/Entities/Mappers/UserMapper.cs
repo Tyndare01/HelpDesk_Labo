@@ -1,5 +1,5 @@
-﻿using API_HelpDesk_Labo.ViewModel;
-using BLL.Repositories.DTOs.User;
+﻿using BLL.Entities.DTOs.User;
+using BLL.Entities.ViewModel;
 using Domain.Entities;
 
 namespace BLL.Entities.Mappers
@@ -21,7 +21,7 @@ namespace BLL.Entities.Mappers
 
         public static User ToUser(this CreateUserDTO userdto)
         {
-            return new User(userdto.Email, userdto.Password);
+            return new User(userdto.Email, userdto.Firstname, userdto.Lastname, userdto.Password);
         }
 
         public static IEnumerable<UserViewModel> ToUserViewModelsList(this IEnumerable<User> users)
