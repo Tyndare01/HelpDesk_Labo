@@ -12,6 +12,8 @@ namespace BLL.Repositories
 {
     public interface IUserRepositoryBLL
     {
+        public UserViewModel? Login(int Id, LoginDTO LoginDTO);
+        
         public UserViewModel? Create(CreateUserDTO user);
 
         //public bool EmailAlreadyUsed(string email);
@@ -24,10 +26,18 @@ namespace BLL.Repositories
 
         Task<IEnumerable<UserViewModel>> GetAll(); // On peut pas avoir un tableau avec des users null
 
-        UserViewModel? UpdateDatas(int id, ChangeDataDTO changeDataDTO);
+        Task <UserViewModel?> UpdateDatas(int Id, ChangeDataDTO changeDataDTO);
+
+        Task<UserViewModel?> UpdateRole(int Id, ChangeRoleDTO changeRoleDTO);
+
+        Task<bool> UpdatePassword(int Id, ChangePasswordDTO changePasswordDTO);
+
+
+        //public bool Delete(int Id);
+
+        public Task<bool> Delete (int Id);
 
 
 
-        public bool Delete(int Id);
     }
 }

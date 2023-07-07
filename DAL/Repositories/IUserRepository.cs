@@ -23,7 +23,12 @@ namespace DAL.Repositories
 
         public User? Update(User user);
 
-        public bool Delete(int Id);
+        public Task<bool> Delete(User user);
+
+        public Task<bool> UpDatePassword(int id, string actualPasswd, string newPasswd);
+
+
+        //public bool Delete(int Id);
 
     }
 }

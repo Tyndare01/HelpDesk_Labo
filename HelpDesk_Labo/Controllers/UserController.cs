@@ -7,6 +7,7 @@ using BLL.Entities.DTOs.User;
 using BLL.Entities.Mappers;
 using BLL.Entities.ViewModel;
 using Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API_HelpDesk_Labo.Controllers
 {
@@ -31,6 +32,22 @@ namespace API_HelpDesk_Labo.Controllers
             }
             return BadRequest();
         }
+
+        [HttpDelete("{Id}")]
+        
+        public async Task<IActionResult> Delete(int Id)
+        {
+            if (ModelState.IsValid) 
+            {
+                bool success = await _userService.Delete(Id);
+                return  success ? Ok() : NotFound();
+
+
+            }
+            return BadRequest();
+                
+        }
+
         
         [HttpGet]
         public async Task<IActionResult> GetAll() 
@@ -38,21 +55,87 @@ namespace API_HelpDesk_Labo.Controllers
             return Ok(await _userService.GetAll());
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("{Id:int}")]
         public async Task<IActionResult> GetById(int Id)
         {
             return Ok(await _userService.GetById(Id));
         }
 
-        [HttpGet("{Email}")]
-        public async Task<IActionResult> GetByEmail(string email)
+        [HttpGet("email/{Email}")]
+        public async Task<IActionResult> GetByEmail(string Email)
         {
-            return Ok(await _userService.GetByEmail(email));
+            return Ok(await _userService.GetByEmail(Email));
         }
+
+
+        [HttpPatch("data/{Id}")]
+        public async Task<IActionResult> UpdateDatas(int Id, ChangeDataDTO changeDataDTO)
+        {
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
+
+            if (ModelState.IsValid)
+            {
+                UserViewModel? userViewModel = await _userService.UpdateDatas(Id, changeDataDTO);
+
+                if (userViewModel != null)
+                {
+                    return Ok(userViewModel);
+                }
+            }
+
+            return BadRequest();
+          
+        }
+
+        [HttpPatch("Role/{Id}")]
+        public async Task<IActionResult> UpdateRole(int Id, ChangeRoleDTO changeRoleDTO)
+        {
+
+            if (ModelState.IsValid)
+            {
+                UserViewModel? userViewModel = await _userService.UpdateRole(Id, changeRoleDTO);
+
+                if (userViewModel != null)
+                {
+                    return Ok(userViewModel);
+                }
+            }
+
+            return BadRequest();
+
+        }
+
+        [HttpPatch("Password/{Id}")]
+        public async Task<IActionResult> UpdatePassword(int Id, ChangePasswordDTO changePassword)
+        {
+
+            if (ModelState.IsValid)
+            {
+                return await _userService.UpdatePassword(Id, changePassword)? Ok(): BadRequest();
+
+                
+                
+            }
+
+            return BadRequest();
+
+        }
+
+
+
+
+
+
+
+
+
 
     }
 
 
 
-    
+
 }

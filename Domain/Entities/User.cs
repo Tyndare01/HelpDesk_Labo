@@ -18,6 +18,7 @@ namespace Domain.Entities
 
         public User(string email, string firstname, string lastname, string password)
         {
+           
             Email = email;
             FirstName = firstname;
             LastName = lastname;
@@ -26,7 +27,7 @@ namespace Domain.Entities
 
         }
 
-        public int Id { get; set; }
+        public int Id_User { get; set; }
 
         public string FirstName { get; set; }
 
