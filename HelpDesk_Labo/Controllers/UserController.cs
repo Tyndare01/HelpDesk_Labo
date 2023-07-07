@@ -39,6 +39,21 @@ namespace API_HelpDesk_Labo.Controllers
         {
             if (ModelState.IsValid) 
             {
+                var success = await _userService.Delete(Id);
+                return  success ? Ok() : NotFound();
+
+
+            }
+            return BadRequest();
+                
+        }
+
+        [HttpDelete("{Id}")]
+        
+        public async Task<IActionResult> Delete(int Id)
+        {
+            if (ModelState.IsValid) 
+            {
                 bool success = await _userService.Delete(Id);
                 return  success ? Ok() : NotFound();
 

@@ -98,6 +98,55 @@ namespace BLL.Services
                 }
                 
             }
+            var user = await _UserRepository.GetById(Id);
+            return user?.ToUserViewModel();
+            //return (await _UserRepository.GetById(Id))?.ToUserViewModel();
+        }
+
+       
+
+        public async Task <UserViewModel?> UpdateDatas(int Id, ChangeDataDTO changeDataDTO)
+        {
+            User? user =  await _UserRepository.GetById(Id);
+            if (user != null) 
+            {
+                user.FirstName = changeDataDTO.Firstname;
+                user.LastName = changeDataDTO.Lastname;
+                
+                return _UserRepository.Update(user)?.ToUserViewModel();
+            }
+
+            return null;
+        }
+
+        public async Task<UserViewModel?> UpdatePassword(int Id, ChangePasswordDTO changePasswordDTO)
+        {
+            User? user = await _UserRepository.GetById(Id);
+            if(user != null && user.Password == changePasswordDTO.ActualPassword)
+            {
+                user.Password = changePasswordDTO.ActualPassword;
+                user.Password = changePasswordDTO.NewPassword;
+                user.Password = changePasswordDTO.NewPasswordConfirmation;
+
+                return _UserRepository.Update(user)?.ToUserViewModel();
+            }
+
+            return _UserRepository?.Update(user)?.ToUserViewModel();
+        }
+
+        public async Task<UserViewModel?> UpdateRole(int Id, ChangeRoleDTO changeRoleDTO)
+        {
+            try
+            {
+                User? user = await _UserRepository.GetById(Id);
+                if (user != null && Enum.IsDefined(typeof(Roles), changeRoleDTO.Role))
+                {
+                    user.Role = changeRoleDTO.Role;
+
+                    return _UserRepository.Update(user)?.ToUserViewModel();
+                }
+                
+            }
 
             catch (Exception e)
             {

@@ -110,40 +110,20 @@ namespace DAL.Services
 
         }
 
-        public async Task<bool> UpDatePassword(int id, string actualPasswd, string newPasswd)
-        {
-            try
-            {
-                var parameter = new { Id = id, ActualPasswd = actualPasswd,NewPasswd = newPasswd };
-
-                string sql = "User_CheckPassword";
-
-                int result = await connection.ExecuteAsync(sql, parameter, commandType: CommandType.StoredProcedure);
-
-                return result == 1? true : false;
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            return false;
-            
-        }
-
-        public User Update(User user)
+        public User? Update(User user)
         {
             try
             {
                 string procedure = "User_Update";
 
-                var parameter = new DynamicParameters();
-                parameter.Add("@Id", user.Id_User);
-                parameter.Add("@Email", user.Email);
-                parameter.Add("@Firstname", user.FirstName);
-                parameter.Add("@Lastname", user.LastName);
-                parameter.Add("@Role", user.Role.ToString());
-                
-
+                var parameter = new
+                {
+                    Id = user.Id,
+                    Email = user.Email,
+                    Firstname = user.FirstName,
+                    Lastname = user.LastName,
+                    Role = user.Role,
+                    Password = user.Password
 
                 User? userUpdated = connection.QueryFirst<User>(procedure, parameter, commandType: CommandType.StoredProcedure);
 
