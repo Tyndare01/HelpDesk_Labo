@@ -23,7 +23,10 @@ namespace DAL.Repositories
 
         public User? Update(User user);
 
-        public bool Delete(int Id);
+        public Task<bool> Delete(User user);
+        
+
+        //public bool Delete(int Id);
 
     }
 }

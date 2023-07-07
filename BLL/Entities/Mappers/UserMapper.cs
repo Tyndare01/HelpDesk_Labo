@@ -10,7 +10,7 @@ namespace BLL.Entities.Mappers
         {
             return new UserViewModel
             {
-                Id = user.Id,
+                Id = user.Id_User,
                 Email = user.Email,
                 Firstname = user.FirstName,
                 Lastname = user.LastName,

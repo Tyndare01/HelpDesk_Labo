@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE User_Update
-    @id INT,
+    @Id INT,
     @Email NVARCHAR(50),
     @Firstname NVARCHAR(50),
     @Lastname NVARCHAR(50),
@@ -7,12 +7,6 @@
     @Password NVARCHAR(50)
 AS
 BEGIN
-
-DECLARE @salt VARCHAR(100), @passwordHash VARBINARY(64), @Pepper NVARCHAR(128) = '%1PepperBoy0%'
-
-SET @salt = NEWID();
-
-SET @passwordHash = HASHBYTES('SHA2_512', CONCAT(@salt, @Password, @Pepper))
 
 
 
@@ -22,11 +16,11 @@ SET @passwordHash = HASHBYTES('SHA2_512', CONCAT(@salt, @Password, @Pepper))
         Firstname = @Firstname,
         Lastname = @Lastname,
         Role = @Role,
-        HashPsw = @passwordHash
+        HashPsw = HashPsw
 
-    WHERE Id_User = @id
+    WHERE Id_User = @Id
 
-    SELECT * FROM Users WHERE Id_User = @id
+    SELECT Id_User, Firstname, Lastname, Role, Email FROM Users WHERE Id_User = @Id
 
 END
 
